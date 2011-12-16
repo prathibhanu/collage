@@ -1,0 +1,1 @@
+This is the stub for all Java sources.

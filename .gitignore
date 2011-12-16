@@ -1,0 +1,29 @@
+#### `.gitignore`
+
+# SVN directories
+.svn
+
+# OSX noise
+.DS_Store
+*.pbxuser
+profile
+
+# Eclipse noise
+.settings
+.project
+bin/*
+
+# Flash Builder noise
+.actionScriptProperties
+.flexProperties
+bin-debug/*
+report/*
+bin-test/*
+docs/*
+.flexLibProperties
+
+# Java noise
+*.class
+
+# Windows noise
+desktop.ini
