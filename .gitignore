@@ -1,19 +1,19 @@
-#### `.gitignore`
+# `.gitignore`
 
-# SVN directories
+### SVN directories
 .svn
 
-# OSX noise
+### OSX noise
 .DS_Store
 *.pbxuser
 profile
 
-# Eclipse noise
+### Eclipse noise
 .settings
 .project
 bin/*
 
-# Flash Builder noise
+### Flash Builder noise
 .actionScriptProperties
 .flexProperties
 bin-debug/*
@@ -22,11 +22,29 @@ bin-test/*
 docs/*
 .flexLibProperties
 
-# Java noise
-*.class
-
-# Windows noise
+### Windows noise
 desktop.ini
 
-# Project specific
+### Compiled source
+*.exe
+*.com
+*.dll
+*.o
+*.so
+*.class
+
+### Archives
+*.zip
+*.jar
+*.dmg
+*.rar
+*.tar
+*.iso
+*.7z
+
+### Logs and Databases
+*.log
+*.sqlite
+
+### Project specific
 WebContent/WEB-INF/lib/*
