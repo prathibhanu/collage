@@ -11,6 +11,9 @@
 		<put-attribute name="body" value="/WEB-INF/jsps/templates/blank.jsp" />
 	</definition>
 	
-	<definition name=".index" template="/WEB-INF/jsps/index.jsp" />
+	<definition name=".index" extends=".masterLayout">
+		<put-attribute name="title" value="Home"/>
+		<put-attribute name="body" value="/WEB-INF/jsps/index.jsp" />
+	</definition>
 
 </tiles-definitions>
