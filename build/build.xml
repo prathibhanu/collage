@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     Dec 16, 2011 12:13:30 PM                                                        
+
+     Collage
+     The world as you see it
+                   
+     @author sangupta                                                                
+     ====================================================================== -->
+<project name="collage" default="default" xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+
+	<description>
+            Collage - The World As You See It!
+    </description>
+	
+	<!-- read the properties file -->
+	<property file="build.properties" />
+	<property file="lib.version.properties" />
+
+	<!-- defined MAVEN ANT TASKS -->
+	<path id="maven-ant-tasks.classpath" path="lib/maven-ant-tasks-2.1.3.jar" />
+	<typedef resource="org/apache/maven/artifact/ant/antlib.xml" uri="antlib:org.apache.maven.artifact.ant" classpathref="maven-ant-tasks.classpath" />
+
+	<!-- ================================= 
+          target: default
+          description: the most applicable target to build the collage project.              
+         ================================= -->
+	<target name="default" depends="downloadDependencies" description="description">
+
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: downloadDependencies                      
+          description: downloads project dependencies from the Maven repository 
+         - - - - - - - - - - - - - - - - - -->
+	<target name="downloadDependencies" description="downloads project dependencies from the Maven repository">
+		<!-- download all given dependencies -->
+		<artifact:dependencies filesetId="dependency.fileset" useScope="runtime">
+			<!-- JSTL -->
+			<dependency groupId="javax.servlet" artifactId="jstl" version="${ver.jstl}" />
+
+			<!-- Apache Tiles, log4j -->
+			<dependency groupId="org.apache.tiles" artifactId="tiles-jsp" version="${ver.tiles}" />
+			<dependency groupId="log4j" artifactId="log4j" version="${ver.log4j}" />
+			
+			<!-- slf4j -->
+			<dependency groupId="org.slf4j" artifactId="jcl-over-slf4j" version="${ver.slf4j}" />
+			
+			<!-- spring core, webmvc -->
+			<dependency groupId="org.springframework" artifactId="spring-core" version="${ver.spring}" />
+			<dependency groupId="org.springframework" artifactId="spring-webmvc" version="${ver.spring}" />
+		</artifact:dependencies>
+
+		<!-- Copy all artifacts to the local dependencies store -->
+		<copy todir="${project.dependencies.folder}">
+			<fileset refid="dependency.fileset" />
+			
+			<!-- This mapper strips off all leading directory information -->
+			<mapper type="flatten" />
+		</copy>
+	</target>
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: clearMavenCache                      
+          description: clears the local maven cache so files are freshly fetched from servers 
+         - - - - - - - - - - - - - - - - - -->
+	<target name="clearMavenCache" description="clears the local maven cache so files are freshly fetched from servers">
+		<delete dir="${user.home}/.m2" />
+	</target>
+
+</project>
