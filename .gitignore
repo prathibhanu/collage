@@ -27,3 +27,6 @@ docs/*
 
 # Windows noise
 desktop.ini
+
+# Project specific
+WebContent/WEB-INF/lib/*
